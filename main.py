@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-@Time ： 2021/3/21 12:01
-@Auth ： Icrons
+@Time ： 2021/8/27 10:55
+@Auth ： Icrons, bmqy
 @IDE ：PyCharm
 
 """
+import os
 import requests
 import re
 import json
@@ -16,24 +17,24 @@ class SspanelQd(object):
     def __init__(self):
         ###############登录信息配置区###############
         # 机场地址
-        self.base_url = 'http://****'
+        self.base_url = os.environ.get('base_url')
         # 登录信息
-        self.email = '*******@qq.com'
-        self.password = 'x******'
+        self.email = os.environ.get('email')
+        self.password = os.environ.get('password')
         ###########################################
         ##############推送渠道配置区###############
         # 酷推qq推送
-        self.ktkey = ''
+        self.ktkey = os.environ.get('ktkey')
         # ServerTurbo推送
-        self.SendKey = ''
+        self.SendKey = os.environ.get('SendKey')
         # Qmsg私聊推送
-        self.QmsgKey = ''
+        self.QmsgKey = os.environ.get('QmsgKey')
         # Telegram私聊推送
         self.tele_api_url = 'https://api.telegram.org'
-        self.tele_bot_token = ''
-        self.tele_user_id = ''
+        self.tele_bot_token = os.environ.get('tele_bot_token')
+        self.tele_user_id = os.environ.get('tele_user_id')
         # Pushplus私聊推送
-        self.push_token = ''
+        self.push_token = os.environ.get('push_token')
         ##########################################
 
     def checkin(self):
@@ -44,7 +45,7 @@ class SspanelQd(object):
             session = requests.session()
             session.get(self.base_url, verify=False)
 
-            login_url = self.base_url + '/auth/login'
+            login_url = self.base_url + '/signin'
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
