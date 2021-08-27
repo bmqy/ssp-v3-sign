@@ -9,6 +9,7 @@
 - 20210817-[a08381](https://github.com/a08381)新增Telegram Bot推送
 - 20210825-[Thund1R](https://github.com/Thund1R)新增Pushplus推送
 
-# 机场推荐
-[跑路云](https://owo-qvq-uvu-owo.xn--mes358a082apda.com/auth/register?code=rQot) - 可以白嫖流量  
-[极简云](https://52jjy.top/#/register?code=IBhwDxw1) - 无限流量线路很多
+# 改版备注
+- 改版自[icrons](https://github.com/icrons/ssp-sign)
+- 支持环境变量；
+- 如有特殊需求，地域推荐香港或其它；
