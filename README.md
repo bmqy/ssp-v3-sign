@@ -12,4 +12,5 @@
 # 改版备注
 - 改版自[icrons](https://github.com/icrons/ssp-sign)
 - 支持环境变量；
+- 更新tg消息模板；
 - 如有特殊需求，地域推荐香港或其它；
