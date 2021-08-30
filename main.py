@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-@Time ： 2021/8/27 10:55
+@Time ： 2021/8/30 08:30
 @Auth ： Icrons, bmqy
-@IDE ：PyCharm
+@IDE ：PyCharm, github
 
 """
 import os
@@ -24,17 +24,17 @@ class SspanelQd(object):
         ###########################################
         ##############推送渠道配置区###############
         # 酷推qq推送
-        self.ktkey = os.environ.get('ktkey')
+        self.ktkey = ''
         # ServerTurbo推送
-        self.SendKey = os.environ.get('SendKey')
+        self.SendKey = ''
         # Qmsg私聊推送
-        self.QmsgKey = os.environ.get('QmsgKey')
+        self.QmsgKey = ''
         # Telegram私聊推送
         self.tele_api_url = 'https://api.telegram.org'
         self.tele_bot_token = os.environ.get('tele_bot_token')
         self.tele_user_id = os.environ.get('tele_user_id')
         # Pushplus私聊推送
-        self.push_token = os.environ.get('push_token')
+        self.push_token = ''
         ##########################################
 
     def checkin(self):
@@ -115,10 +115,15 @@ class SspanelQd(object):
         if self.tele_bot_token == '':
             return
         tele_url = f"{self.tele_api_url}/bot{self.tele_bot_token}/sendMessage"
+        content = "\n".join([
+            "签到站点："+ str(self.base_url),
+            "签到账户："+ str(self.email),
+            "签到结果："+ str(msg)
+        ])
         data = {
             'chat_id': self.tele_user_id,
             'parse_mode': "Markdown",
-            'text': msg
+            'text': content
         }
         requests.post(tele_url, data=data)
         
